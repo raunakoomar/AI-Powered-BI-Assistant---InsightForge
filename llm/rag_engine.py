@@ -47,5 +47,5 @@ class InsightForgeRAG:
             return f"An error occurred during processing: {str(e)}"
 
     def build_rag_system(summary_text, df):
-    rag = InsightForgeRAG(summary_text, df)
-    return rag
+        rag = InsightForgeRAG(summary_text, df)
+        return rag
