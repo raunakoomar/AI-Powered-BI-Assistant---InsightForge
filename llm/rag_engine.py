@@ -1,9 +1,9 @@
 from langchain.chains import RetrievalQA
-from langchain_community.vectorstores import DocArrayInMemorySearch
-from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.schema import Document
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 import os
 
 class InsightForgeRAG:
@@ -20,8 +20,8 @@ class InsightForgeRAG:
         return splitter.split_documents([doc])
 
     def _create_vectorstore(self):
-        embeddings = OpenAIEmbeddings()
-        return DocArrayInMemorySearch.from_documents(self.docs, embeddings)
+        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        return FAISS.from_documents(self.docs, embeddings)
 
     def _load_groq_chat_model(self):
         os.environ["OPENAI_API_KEY"] = "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"
