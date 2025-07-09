@@ -24,7 +24,7 @@ class InsightForgeRAG:
         return DocArrayInMemorySearch.from_documents(self.docs, embeddings)
 
     def _load_groq_chat_model(self):
-        os.environ["OPENAI_API_KEY"] = "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"
+        os.environ["OPENAI_API_KEY"] = "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"
         os.environ["OPENAI_API_BASE"] = "https://api.groq.com/openai/v1"
         return ChatOpenAI(
             model="llama3-70b-8192",
